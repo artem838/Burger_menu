@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        
+        .mini {
+            width:40px;
+            display: none;
+        }
+        .list {
+            list-style-type: none;
+        }
+        .list li {
+            display: inline-block;
+            width:100px;
+            height:30px;
+            background-color: rgb(36, 35, 35);
+            color:white;
+            margin-left:10px;
+            text-align:center;
+            padding:5px;
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+        .list li:hover {
+            background-color: #fff;
+            color:rgb(36, 35, 35);
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+    <img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-256.png" class="mini">
+        <ul class="list">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+        </ul>
+    </div>
+    <script>
+        /*
+        *Задачи
+        * Отслеживать два события 
+        * onload()
+        * onresize()
+        * создать функцию для show и hide иконки меню showIconMenu()
+        * создать функцию для show и hide пунктов меню showItemsLi()
+        * Остеживать событие на клик по иконке мини меню
+        * Создать счетчик, если не парный показиваем список, иначе нет
+        * 
+        */
+
+        let miniMenu = document.querySelector(".mini");
+        let li = document.querySelectorAll(".list li");
+        let ul = document.querySelector
+        
+        window.onload = function() {
+            showIconMenu();
+            showItemsLi();
+        }
+
+        window.onresize = function() {
+           showIconMenu();
+           showItemsLi();
+        }   
+
+        function showIconMenu() {
+            if(window.innerWidth > 620) {
+            miniMenu.style.display = "none";
+            console.log(">680");
+            }
+             if(window.innerWidth < 620) {
+            miniMenu.style.display = "block";
+            console.log("<680");
+            }
+        }
+
+        function showItemsLi() {
+            if(window.innerWidth > 620) {
+                for(let i = 0; i < li.length; i++) {
+                    li[i].style.display = "inline-block";
+                }
+            }
+             if(window.innerWidth < 620) {
+                for(let i = 0; i < li.length; i++) {
+                    li[i].style.display = "none";
+                }            
+            }
+        }
+
+        let n = 0;
+        miniMenu.onclick = function() {
+            n++;
+            if(n%2 != 0) {
+                for(let i = 0; i < li.length; i++) {
+                    li[i].style.display = "block";                   
+                }                 
+            }
+            if(n%2 == 0) {
+                for(let i = 0; i < li.length; i++) {
+                    li[i].style.display = "none";
+                }  
+            }
+        }
+
+        
+    </script>
+</body>
+</html>
